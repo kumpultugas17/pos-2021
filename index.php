@@ -52,9 +52,10 @@
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Offline -->
-    <script src="assets/dist/js/dashboard.js"></script>
+    <!-- <script src="assets/dist/js/dashboard.js"></script> -->
     <script src="assets/dist/js/jquery-3.5.1.js"></script>
     <script src="assets/dist/js/custom.js"></script>
 </body>

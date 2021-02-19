@@ -34,23 +34,29 @@ $result = $koneksi->query("SELECT products.id as id, products.name as product_na
             </tr>
         </thead>
         <tbody>
-            <?php $no= 1; ?>
+            <?php $no = 1; ?>
             <?php foreach ($result as $row) { ?>
                 <tr>
                     <td class="text-center"><?= $no++; ?></td>
                     <td><?= $row['product_name']; ?></td>
                     <td><?= $row['category_name']; ?></td>
-                    <td><?= substr($row['description'], 0, 50).' ...'; ?></td>
-                    <td><?= 'Rp '.number_format($row['price'], 0, ',','.'); ?></td>
+                    <td><?= substr($row['description'], 0, 50) . ' ...'; ?></td>
+                    <td><?= 'Rp ' . number_format($row['price'], 0, ',', '.'); ?></td>
                     <td class="text-center"><?= $row['stock']; ?></td>
                     <td class="text-center"><img src="<?= $row['photo']; ?>" width="50px"></td>
                     <td class="text-center">
-                        <button id="btn-previewProduct" class="btn btn-sm btn-info"><i class="fa fa-search"></i></button>
-                        <button id="btn-editProduct" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button id="btn-deleteProduct" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
+                        <button id="btn-previewProduct" class="btn btn-sm btn-info">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <button id="btn-editProduct" class="btn btn-sm btn-warning">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button value="<?= $row['id']; ?>" id="btn-deleteProduct" class="btn btn-sm btn-danger">
+                            <i class="fa fa-trash-alt"></i>
+                        </button>
                     </td>
                 </tr>
-            <?php
+                <?php
             }
             ?>
         </tbody>
