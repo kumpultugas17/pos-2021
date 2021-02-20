@@ -64,15 +64,65 @@ $(document).ready(function (){
             contentType: false,
             success: function (response) {
                 loadProducts();
-                // if (response == 'success') {
-                //     console.log('Berhasil');
-                // } else {
-                //     console.log('Gagal');
-                // }
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
                     title: 'Product has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        });
+    });
+
+    $('#konten').on('click', '#btn-previewProduct', function(){
+        let id = $(this).attr('value');
+        $.ajax({
+            url: 'pages/products/preview.php',
+            type: 'GET',
+            data: {
+                id : id
+            },
+            success: function(data) {
+                $('#konten').html(data);
+            }
+        });
+    });
+
+    $('#konten').on('click', '#btn-bkProduct', function(){
+        loadProducts();
+    });
+
+    $('#konten').on('click', '#btn-editProduct', function(){
+        let id = $(this).attr('value');
+        $.ajax({
+            url: 'pages/products/edit.php',
+            type: 'GET',
+            data: {
+                id : id
+            },
+            success: function(data) {
+                $('#konten').html(data);
+            }
+        });
+    });
+
+    $('#konten').on('submit', '#form-editProduct', function(event){
+        event.preventDefault();
+        let formData = new FormData(this);
+        $.ajax({
+            type: 'POST',
+            url: 'pages/products/action.php?act=update',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                loadProducts();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Product has been updated',
                     showConfirmButton: false,
                     timer: 1500
                 });

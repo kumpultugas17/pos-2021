@@ -28,7 +28,33 @@ switch ($_GET['act']) {
     break;
 
     case 'update':
+    $id = $_POST['id'];
+    $product_name = $_POST['product_name'];
+    $category_id = $_POST['category_id'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $stock = $_POST['stock'];
+    $photo_lama = $_POST['photo_lama'];
 
+    $temp = "images/";
+    if (!empty($_FILES['photo']['tmp_name'])) {
+        $fileUpload = $_FILES['photo']['tmp_name'];
+        $imageName = $_FILES['photo']['name'];
+        $random = rand(1111111, 99999999);
+        $imageExt = substr($imageName, strrpos($imageName, '.'));
+        $imageExt = str_replace('.', '', $imageExt);
+        $imageName = preg_replace("/\.[^.\s]{3,4}$/4", "", $imageName);
+        $newName = str_replace(' ', '', $random . '.' . $imageExt);
+        $photo = $temp.$newName;
+        move_uploaded_file($fileUpload, '../../images/'.$newName);
+        if ($photo_lama != "" && $photo_lama != "images/no-image.png") {
+            unlink('../../'. $photo_lama);
+        }
+    } else {
+        $photo = $photo_lama;
+    }
+
+    $query = $koneksi->query("UPDATE products SET name='$product_name', category_id='$category_id', description='$description', image='$photo', price='$price', stock='$stock' WHERE id='$id'");
     break;
 
     case 'delete';

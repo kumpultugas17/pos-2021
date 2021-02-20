@@ -44,11 +44,11 @@ $result = $koneksi->query("SELECT products.id as id, products.name as product_na
                     <td><?= 'Rp ' . number_format($row['price'], 0, ',', '.'); ?></td>
                     <td class="text-center"><?= $row['stock']; ?></td>
                     <td class="text-center"><img src="<?= $row['photo']; ?>" width="50px"></td>
-                    <td class="text-center">
-                        <button id="btn-previewProduct" class="btn btn-sm btn-info">
+                    <td class="text-center" width="150px">
+                        <button value="<?= $row['id']; ?>" id="btn-previewProduct" class="btn btn-sm btn-info">
                             <i class="fa fa-search"></i>
                         </button>
-                        <button id="btn-editProduct" class="btn btn-sm btn-warning">
+                        <button value="<?= $row['id']; ?>" id="btn-editProduct" class="btn btn-sm btn-warning">
                             <i class="fa fa-edit"></i>
                         </button>
                         <button value="<?= $row['id']; ?>" id="btn-deleteProduct" class="btn btn-sm btn-danger">
